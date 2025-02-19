@@ -1,0 +1,36 @@
+import seaborn as sns
+# Load the Iris dataset
+iris = sns.load_dataset('iris')
+
+# Display the first few rows of the dataset
+print(iris.head())
+
+# Pairplot to visualize relationships between all features
+plt.figure(figsize=(10, 6))
+sns.pairplot(iris, hue='species', markers=["o", "s", "D"])
+plt.suptitle('Pairplot of Iris Dataset', y=1.02)
+plt.show()
+
+# Heatmap to visualize the correlation between features
+plt.figure(figsize=(8, 6))
+correlation = iris.corr(numeric_only=True)  # Only take numeric columns
+sns.heatmap(correlation, annot=True, cmap='coolwarm', fmt='.2f')
+plt.title('Correlation Heatmap of Iris Features')
+plt.show()
+
+# Violin plot for petal length and width by species
+plt.figure(figsize=(10, 6))
+sns.violinplot(data=iris, x='species', y='petal_length', hue='species', inner='quartile', legend=False)
+plt.title('Violin Plot of Petal Length by Species')
+plt.xlabel('Species')
+plt.ylabel('Petal Length (cm)')
+plt.show()
+
+
+# Strip plot to show distribution of petal width by species
+plt.figure(figsize=(10, 6))
+sns.stripplot(data=iris, x='species', y='petal_width', jitter=True, hue='species', legend=False)
+plt.title('Strip Plot of Petal Width by Species')
+plt.xlabel('Species')
+plt.ylabel('Petal Width (cm)')
+plt.show()
