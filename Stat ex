@@ -1,0 +1,29 @@
+# Load necessary libraries
+library(stats)
+
+
+# Generate example data
+group1 <- c(12, 14, 16, 18, 20)
+group2 <- c(11, 13, 15, 17, 19)
+
+# Sign Test
+sign_test <- binom.test(sum(group1 > group2), length(group1), p = 0.5, alternative = "greater")
+
+# Print Sign Test results
+cat("Sign Test:\n")
+print(sign_test)
+
+# Signed Rank Test (Wilcoxon Signed Rank Test for paired samples)
+signed_rank_test <- wilcox.test(group1, group2, paired = TRUE)
+# Print Signed Rank Test results
+cat("\nSigned Rank Test (Wilcoxon Signed Rank Test for paired samples):\n")
+print(signed_rank_test)
+
+
+
+# Mann-Whitney-Wilcoxon Test for two samples
+mw_w_test <- wilcox.test(group1, group2)
+
+# Print Mann-Whitney-Wilcoxon Test results
+cat("\nMann-Whitney-Wilcoxon Test for two samples:\n")
+print(mw_w_test)
